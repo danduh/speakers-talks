@@ -15,12 +15,19 @@
     "typeRoots": [
       "node_modules/@types"
     ],
+    "paths": {
+      "@shared-interfaces": [
+        "apps/interfaces/*"
+      ],
+      "@shared-dtos": [
+        "apps/dtos/*",
+        "apps/dtos/"
+      ]
+    },
     "lib": [
       "es2018",
       "dom"
-    ],
-    "paths": {},
-    "rootDir": "."
+    ]
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,

@@ -1,5 +1,10 @@
 # SpeakerTalks
 
+
+###DOCKER
+
+`docker run -d -p 27017:27017 -v ~/data:/data/db mongo`
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.2.2.
 
 ## Development server
