@@ -1,12 +1,13 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": "./",
+    "baseUrl": ".",
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,
     "downlevelIteration": true,
     "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
     "module": "esnext",
     "moduleResolution": "node",
     "importHelpers": true,
@@ -17,7 +18,9 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {},
+    "rootDir": "."
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,

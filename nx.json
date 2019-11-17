@@ -1,0 +1,24 @@
+{
+  "npmScope": "speaker-talks",
+  "implicitDependencies": {
+    "angular.json": "*",
+    "package.json": "*",
+    "tsconfig.json": "*",
+    "tslint.json": "*",
+    "nx.json": "*"
+  },
+  "projects": {
+    "speaker-talks": {
+      "tags": []
+    },
+    "speaker-talks-e2e": {
+      "tags": []
+    },
+    "apps-api": {
+      "tags": []
+    },
+    "api": {
+      "tags": []
+    }
+  }
+}

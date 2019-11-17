@@ -1,7 +1,12 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { LoginComponent } from './login/login.component';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {LoginComponent} from './login/login.component';
 import {RouterModule, Routes} from "@angular/router";
+import {SharedModule} from "../shared/shared.module";
+import {MatButtonModule} from "@angular/material";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {RegisterComponent} from './register/register.component';
+
 const routes: Routes = [
   {
     path: '',
@@ -11,16 +16,22 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent
+  },
+  {
+    path: 'register',
+    component: RegisterComponent
   }
 ];
 
 
-
 @NgModule({
-  declarations: [LoginComponent],
+  declarations: [LoginComponent, RegisterComponent],
   imports: [
+    SharedModule,
     RouterModule.forChild(routes),
-    CommonModule
+    CommonModule,
+
   ]
 })
-export class AuthModule { }
+export class AuthModule {
+}
