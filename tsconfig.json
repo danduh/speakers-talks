@@ -17,7 +17,8 @@
     ],
     "paths": {
       "@shared-interfaces": [
-        "apps/interfaces/*"
+        "apps/interfaces/*",
+        "apps/interfaces/"
       ],
       "@shared-dtos": [
         "apps/dtos/*",

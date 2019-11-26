@@ -1,8 +1,10 @@
 import * as mongoose from 'mongoose';
+import * as passportLocalMongoose from 'passport-local-mongoose';
 
 export const UserSchema = new mongoose.Schema({
-  email: String,
   firstName: String,
   lastName: String,
-  password: String
+  email: String,
+  password: String,
 });
+UserSchema.plugin(passportLocalMongoose);

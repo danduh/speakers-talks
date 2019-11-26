@@ -1,6 +1,6 @@
-import {NgModule} from '@angular/core';
-import {Routes, RouterModule} from '@angular/router';
-import {AuthComponent} from "./auth/auth.component";
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+import { AuthComponent } from './auth/auth.component';
 
 const routes: Routes = [
   {
@@ -14,14 +14,14 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        loadChildren: () => import('./auth/auth.module').then(mod => mod.AuthModule),
+        loadChildren: () => import('./auth/auth.module').then(mod => mod.AuthModule)
       }
     ]
   },
-  // {
-  //   path: 'main',
-  //   loadChildren: () => import('./main/main.module').then(mod => mod.MainModule),
-  // },
+  {
+    path: 'main',
+    loadChildren: () => import('./main/main.module').then(mod => mod.MainModule)
+  }
   // {
   //   path: '**',
   //   redirectTo: '/auth',
