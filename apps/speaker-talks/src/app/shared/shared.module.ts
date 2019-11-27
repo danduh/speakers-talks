@@ -1,7 +1,11 @@
-import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {MatButtonModule, MatFormFieldModule, MatIconModule, MatInputModule} from "@angular/material";
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import {
+  MatButtonModule, MatCheckboxModule, MatCardModule, MatDividerModule, MatIconModule,
+  MatSidenavModule, MatToolbarModule, MatListModule, MatTooltipModule, MatTabsModule, MatTableModule,
+  MatFormFieldModule, MatInputModule, MatDialogModule
+} from '@angular/material';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const MATERIAL = [
   MatFormFieldModule,
@@ -10,7 +14,9 @@ const MATERIAL = [
   MatButtonModule,
   FormsModule,
   ReactiveFormsModule,
-
+  MatButtonModule, MatCheckboxModule, MatCardModule, MatDividerModule,
+  MatSidenavModule, MatToolbarModule, MatListModule, MatTooltipModule, MatTabsModule,
+  MatTableModule, MatDialogModule
 ];
 
 

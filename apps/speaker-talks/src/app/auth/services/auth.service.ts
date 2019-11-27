@@ -13,7 +13,9 @@ export class AuthService {
   }
 
   private postLogin(response: LoginResponse) {
-    localStorage.setItem('AUTH', JSON.stringify(response.token));
+    localStorage.setItem(environment.AUTH_KEY.token, JSON.stringify(response.token.accessToken));
+    const expiresAt = Date.now() + response.token.expiresIn;
+    localStorage.setItem(environment.AUTH_KEY.exp, JSON.stringify(expiresAt));
   }
 
   public register(authDetails: AuthDetailsInterface) {

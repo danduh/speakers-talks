@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { UsersService } from '../users/users.service';
+import { IUser } from '../interfaces/user.interface';
 
 @Injectable()
 export class ProfileService {
@@ -7,7 +8,7 @@ export class ProfileService {
 
   }
 
-  update() {
-    return this.usersService.update('asdas');
+  update(profile: IUser) {
+    return this.usersService.update('asdas', profile);
   }
 }

@@ -14,7 +14,11 @@ import { appReducer } from './store/app.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { AuthInterceptor } from './services/auth-interceptor';
+import { AppAuthService } from './services/app-auth-service';
+import { AppAuthGuard } from './services/app-auth-guard.service';
+import { HomeModule } from './home/home.module';
 
 @NgModule({
   declarations: [
@@ -22,12 +26,13 @@ import { HttpClientModule } from '@angular/common/http';
     AppComponent
   ],
   imports: [
+    HomeModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
     StoreModule.forRoot(appReducer),
     EffectsModule.forRoot([]),
-    StoreDevtoolsModule.instrument({maxAge: 25, logOnly: environment.production}),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     SharedModule,
     AuthModule,
     MainModule,
@@ -37,9 +42,18 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   exports: [
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule
   ],
-  providers: [],
+  providers: [
+    AppAuthService,
+    AppAuthGuard,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
