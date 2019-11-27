@@ -3,9 +3,10 @@ import { AuthDetailsInterface } from '@shared-interfaces';
 import { Observable } from 'rxjs';
 import { LoginResponse } from '@shared-interfaces';
 import { map, tap } from 'rxjs/operators';
+import { environment } from '@st-environment/environment';
 
 export class AuthService {
-  private baseUrl = 'http://localhost:3333';
+  private baseUrl = environment.baseUrl;
 
   constructor(private http: HttpClient) {
 

@@ -36,7 +36,7 @@ export class AuthEffects {
 
   postLogin$ = createEffect(() => this.actions$.pipe(
     ofType('[AUTH] Login Success'),
-    tap(() => this.router.navigate(['/main']))
+    tap(() => this.router.navigate(['/main/profile']))
   ), { dispatch: false });
 
   constructor(

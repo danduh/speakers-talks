@@ -23,6 +23,9 @@
       "@shared-dtos": [
         "apps/dtos/*",
         "apps/dtos/"
+      ],
+      "@st-environment/*": [
+        "apps/speaker-talks/src/environments/*"
       ]
     },
     "lib": [

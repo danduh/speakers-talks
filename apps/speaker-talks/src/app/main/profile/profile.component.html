@@ -1,1 +1,19 @@
-<p>profile works!</p>
+<div class="form-container">
+  <h2>Update your profile</h2>
+  <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <input matInput placeholder="First Name"
+             formControlName="firstName">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Last Name"
+             formControlName="lastName">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Email"
+             formControlName="username">
+    </mat-form-field>
+    <button mat-button color="primary">Save</button>
+  </form>
+</div>
+

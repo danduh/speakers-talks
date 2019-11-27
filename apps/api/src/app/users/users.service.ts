@@ -33,7 +33,7 @@ export class UsersService {
     return await createdUser.save();
   }
 
-  async update(ID: number, newValue: IUser): Promise<IUser> {
+  async update(ID: string, newValue: IUser): Promise<IUser> {
     const user = await this.userModel.findById(ID).exec();
 
     if (!user._id) {

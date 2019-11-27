@@ -41,9 +41,8 @@ const routes: Routes = [
     SharedModule,
     RouterModule.forChild(routes),
     EffectsModule.forFeature([AuthEffects]),
-    StoreModule.forFeature('AUTH', { registration: registrationReducer }),
+    StoreModule.forFeature('AUTH', { profile: registrationReducer }),
     CommonModule
-
   ]
 })
 export class AuthModule {
