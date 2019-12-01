@@ -3,9 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home.component';
 import { RouterModule, Routes } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DirectivesModule } from './directives/directives.module';
-import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PortfolioComponent } from './portfolio/portfolio.component';
 import { AboutComponent } from './about/about.component';
@@ -39,13 +37,10 @@ const routes: Routes = [
     SharedModule,
     RouterModule.forChild(routes),
     CommonModule,
-    BrowserModule,
-    BrowserAnimationsModule,
     FlexLayoutModule,
     DirectivesModule,
     FormsModule,
     ReactiveFormsModule
-
   ]
 })
 export class HomeModule {

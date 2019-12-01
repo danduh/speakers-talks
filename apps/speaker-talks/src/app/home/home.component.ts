@@ -2,13 +2,14 @@ import { ChangeDetectorRef, Component, Inject, OnDestroy, OnInit } from '@angula
 import { MediaMatcher } from '@angular/cdk/layout';
 import { MatDialog } from '@angular/material';
 import { DOCUMENT } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements  OnDestroy {
+export class HomeComponent implements OnDestroy {
   contactFabButton: any;
   bodyelement: any;
   sidenavelement: any;
@@ -21,10 +22,18 @@ export class HomeComponent implements  OnDestroy {
 
   private _mobileQueryListener: () => void;
 
-  constructor(@Inject(DOCUMENT) document, changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, public dialog: MatDialog) {
+  constructor(@Inject(DOCUMENT) document,
+              changeDetectorRef: ChangeDetectorRef,
+              media: MediaMatcher,
+              private router: Router,
+              public dialog: MatDialog) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
+  }
+
+  public login() {
+    this.router.navigate(['auth/login']);
   }
 
   public detectScroll(event) {
