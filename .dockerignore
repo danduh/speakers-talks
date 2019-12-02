@@ -1,0 +1,6 @@
+node_modules
+dist
+.vscode
+# ignore .git and .cache folders
+.git
+.cache

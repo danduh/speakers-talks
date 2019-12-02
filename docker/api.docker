@@ -1,0 +1,11 @@
+FROM node:10
+WORKDIR /api-app
+
+COPY . .
+RUN npm i
+EXPOSE 3333
+
+WORKDIR /api-app
+ENV MONOG_URL='mongo:27017'
+
+CMD npm run start:api

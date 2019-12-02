@@ -1,0 +1,52 @@
+version: "3"
+
+services:
+  client:
+    image: speak-client
+    container_name: speak-client
+    build:
+      dockerfile: ./docker/client.docker
+      context: .
+    ports:
+      - 4200:80
+    networks:
+      - front-tier
+
+  api:
+    image: speak-api
+    container_name: speak-api
+    build:
+      dockerfile: ./docker/api.docker
+      context: .
+    ports:
+      - "3333:3333"
+    networks:
+      - front-tier
+      - back-tier
+    links:
+      - mongo
+
+  mongo:
+    image: speak-mongo
+    container_name: mongo
+    build:
+      dockerfile: ./docker/mongo.docker
+      context: .
+    ports:
+      - "27017:27017"
+    networks:
+      - back-tier
+
+#  client:
+#    image: speak-client
+#    build:
+#      dockerfile: ./docker/client.docker
+#      context: .
+#    ports:
+#      - 4200:4200
+#    networks:
+#      - front-tier
+
+networks:
+  front-tier:
+  back-tier:

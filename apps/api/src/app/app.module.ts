@@ -6,19 +6,20 @@ import { AppService } from './app.service';
 import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
 import { ProfileModule } from './profile/profile.module';
+import { environment } from '../environments/environment';
 
 @Module({
   imports: [
-    MongooseModule.forRoot('mongodb://localhost/nest'),
+    MongooseModule.forRoot(`mongodb://${environment.mongoURL}/nest`),
     UsersModule,
     AuthModule,
     ProfileModule
   ],
   controllers: [
-    AppController,
+    AppController
   ],
   providers: [
-    AppService,
+    AppService
   ]
 })
 export class AppModule {
