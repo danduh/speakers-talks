@@ -1,0 +1,19 @@
+{
+  "hosting": [
+    {
+      "target": "speaker-talks",
+      "public": "dist/apps/speaker-talks",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    }
+  ]
+}

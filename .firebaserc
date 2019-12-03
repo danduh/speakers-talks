@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "web-devops-workshop": {
+      "hosting": {
+        "speaker-talks": [
+          "web-devops-workshop"
+        ]
+      }
+    }
+  }
+}

@@ -11,6 +11,7 @@ import { registrationReducer } from './store/auth.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { AuthEffects } from './store/auth.effects';
 import { AuthService } from './services/auth.service';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 
 const routes: Routes = [
   {
@@ -38,6 +39,7 @@ const routes: Routes = [
     AuthService
   ],
   imports: [
+    AngularFireAuthModule,
     SharedModule,
     RouterModule.forChild(routes),
     EffectsModule.forFeature([AuthEffects]),

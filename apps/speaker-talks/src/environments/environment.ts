@@ -5,6 +5,16 @@
 export const environment = {
   production: false,
   baseUrl: 'http://localhost:3333',
+  firebaseConfig: {
+    apiKey: 'AIzaSyC561a0Vz_z8FDGoWFIvmAKXlFia58hXmQ',
+    authDomain: 'speakers-talks.firebaseapp.com',
+    databaseURL: 'https://speakers-talks.firebaseio.com',
+    projectId: 'speakers-talks',
+    storageBucket: 'speakers-talks.appspot.com',
+    messagingSenderId: '733313811125',
+    appId: '1:733313811125:web:139eefb71fd853c5bff4fc',
+    measurementId: 'G-55HQHJK170'
+  },
   AUTH_KEY: { token: 'jwt-token', exp: 'jwt-exp' }
 };
 

@@ -19,6 +19,7 @@ import { AuthInterceptor } from './services/auth-interceptor';
 import { AppAuthService } from './services/app-auth-service';
 import { AppAuthGuard } from './services/app-auth-guard.service';
 import { HomeModule } from './home/home.module';
+import { AngularFireModule } from '@angular/fire';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { HomeModule } from './home/home.module';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
     StoreModule.forRoot(appReducer),
     EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
