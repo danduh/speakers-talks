@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    this.store.dispatch(login(this.loginForm.getRawValue()));
+    this.store.dispatch(login({ payload: this.loginForm.getRawValue() }));
   }
 
 }

@@ -4,23 +4,21 @@ import { AuthService } from './auth.service';
 import { UsersModule } from '../users/users.module';
 import { LocalStrategy } from './strategies/local.strategy';
 import { JwtStrategy } from './strategies/jwt.strategy';
+import { DbModule } from '../shared/db-module';
 
 @Module({
   imports: [
-    UsersModule
+    UsersModule,
+    DbModule,
   ],
   controllers: [
     AuthController
   ],
   providers: [
-    AuthService,
     LocalStrategy,
     JwtStrategy
   ],
   exports: [
-    AuthService,
-    LocalStrategy,
-    JwtStrategy
   ]
 })
 export class AuthModule {

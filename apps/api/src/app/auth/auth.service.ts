@@ -7,13 +7,22 @@ import { InjectModel } from '@nestjs/mongoose';
 import { debug } from 'console';
 import { IUser } from '../interfaces/user.interface';
 import { RegistrationStatus } from './interfaces/registration-status.interface';
-import { CreateUserDto } from '@shared-dtos';
+import { AuthDetailsDTO, CreateUserDto } from '@shared-dtos';
 import { environment } from '../../environments/environment';
 
 @Injectable()
 export class AuthService {
   constructor(private readonly usersService: UsersService,
               @InjectModel('User') private readonly userModel: PassportLocalModel<IUser>) {
+  }
+
+  login(options: AuthDetailsDTO) {
+    console.log(options);
+    return this.userModel.authenticate()(options.username, options.password)
+      .then((resp) => {
+        console.log(resp);
+        return { ppp: 333 };
+      });
   }
 
   register(user: CreateUserDto): Promise<RegistrationStatus> {
@@ -29,7 +38,7 @@ export class AuthService {
 
   createToken(user) {
     console.log('get the expiration');
-    const expiresIn = 3600;
+    const expiresIn = 36000;
 
     const accessToken = jwt.sign({
       id: user.id,

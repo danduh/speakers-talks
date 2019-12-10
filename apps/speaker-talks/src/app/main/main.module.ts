@@ -7,10 +7,6 @@ import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
   {
-    path: '',
-    component: MainComponent,
-  },
-  {
     path: 'profile',
     loadChildren: () => import('./profile/profile.module').then(mod => mod.ProfileModule)
   }

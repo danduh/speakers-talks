@@ -11,3 +11,4 @@ export interface AppState {
 export const selectFeature = (state: AppState) => state.AUTH;
 
 export const selProfile = createSelector(selectFeature, (state: AuthState) => state.profile);
+export const selProfileId = createSelector(selProfile, (state: any) => state.user._id);

@@ -27,11 +27,8 @@ export class AuthController {
     return await this.usersService.findOne(login)
       .then(user => {
         if (!user) {
-          console.log(user);
           res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({ message: 'User Not Found' });
         } else {
-          console.log(user.toString());
-
           const response = {
             token: this.authService.createToken(user),
             user

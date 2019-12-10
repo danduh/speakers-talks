@@ -13,8 +13,10 @@ export class AppAuthGuard implements CanActivate {
   canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | boolean {
 
     if (!this.appAuthService.isLoggedIn()) {
+      console.log('user NOt logged in');
       this.router.navigate(['/']);
     } else {
+      console.log('user IS logged in');
       return true;
     }
   }

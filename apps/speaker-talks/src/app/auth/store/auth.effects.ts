@@ -1,42 +1,41 @@
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, mergeMap, tap } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
-import { loginSuccess, registerSuccess } from './auth.actions';
+import { login, loginSuccess, register, registerSuccess } from './auth.actions';
 import { AuthService } from '../services/auth.service';
 import { Route, Router } from '@angular/router';
 
 @Injectable()
 export class AuthEffects {
   register$ = createEffect(() => this.actions$.pipe(
-    ofType('[AUTH] Register'),
-    tap(console.log),
+    ofType(register),
     mergeMap((action) => {
       return this.authService.register(action.payload)
         .pipe(
-          map((resp) => {
-            console.log(resp);
-            return registerSuccess(resp);
+          map((payload) => {
+            return registerSuccess({ payload });
           })
         );
     })
-  ), { dispatch: false });
+  ), { dispatch: true });
 
   login$ = createEffect(() => this.actions$.pipe(
-    ofType('[AUTH] Login'),
-    tap(console.log),
+    ofType(login),
     mergeMap((action) => {
       return this.authService.login(action.payload)
         .pipe(
-          map((resp) => {
-            return loginSuccess(resp.user);
+          map((payload) => {
+            return loginSuccess({ payload });
           })
         );
     })
   ));
 
   postLogin$ = createEffect(() => this.actions$.pipe(
-    ofType('[AUTH] Login Success'),
-    tap(() => this.router.navigate(['/main/profile']))
+    ofType(loginSuccess),
+    tap((action) => {
+      return this.router.navigate(['/main/profile', action.payload.user._id]);
+    })
   ), { dispatch: false });
 
   constructor(

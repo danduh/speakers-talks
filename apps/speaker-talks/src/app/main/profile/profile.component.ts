@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { profileLoad, profileUpdate } from './store/profile.actions';
-import { selProfile } from '../../auth/store';
-import { tap } from 'rxjs/operators';
+import { selProfile, selProfileId } from '../../auth/store';
+import { map, mergeMap, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-profile',
@@ -15,15 +15,19 @@ export class ProfileComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
               private store: Store<any>) {
-    this.store.select(selProfile)
+
+    this.preLoadData();
+  }
+
+  preLoadData() {
+    this.store.select(selProfileId)
       .pipe(
-        tap(console.log)
-      )
-      .subscribe();
+        tap(profileId => this.store.dispatch(profileLoad({ payload: { _id: profileId } }))),
+        mergeMap(() => this.store.select(selProfile))
+      ).subscribe();
   }
 
   ngOnInit() {
-    this.store.dispatch(profileLoad({ username: 'someusername' }));
     this.profileForm = this.formBuilder.group({
       firstName: [''],
       lastName: [''],
@@ -33,7 +37,13 @@ export class ProfileComponent implements OnInit {
   }
 
   onSubmit() {
-    this.store.dispatch(profileUpdate(this.profileForm.getRawValue()));
+    this.store.select(selProfileId)
+      .subscribe((profileId) => {
+        const payload = this.profileForm.getRawValue();
+        payload.id = profileId;
+        this.store.dispatch(profileUpdate({ payload }));
+      });
+
   }
 
 }

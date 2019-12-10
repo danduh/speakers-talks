@@ -1,18 +1,21 @@
 import { Module } from '@nestjs/common';
-import { LocalStrategy } from '../auth/strategies/local.strategy';
 import { ProfileController } from './profile.controller';
+import { ProfileService } from './profile.service';
+import { UsersService } from '../users/users.service';
+import { DbModule } from '../shared/db-module';
 
 @Module({
-  imports: [],
+  imports: [
+    DbModule
+  ],
   controllers: [
     ProfileController
   ],
   providers: [
-
+    ProfileService,
+    UsersService
   ],
-  exports: [
-
-  ]
+  exports: []
 })
 export class ProfileModule {
 

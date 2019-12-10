@@ -4,22 +4,44 @@ import { Router } from '@angular/router';
 import { map, mergeMap, tap } from 'rxjs/operators';
 import { registerSuccess } from '../../../auth/store/auth.actions';
 import { ProfileService } from '../services/profile.service';
+import { profileLoad, profileSuccess, profileUpdate } from './profile.actions';
 
 @Injectable()
 export class ProfileEffects {
-  updateProfile$ = createEffect(() => this.actions$.pipe(
-    ofType('[PROFILE] Update'),
-    tap(console.log),
+  loadProfile$ = createEffect(() => this.actions$.pipe(
+    ofType(profileLoad),
     mergeMap((action) => {
-      return this.profileService.updateOne(action.payload)
+      return this.profileService.getOne(action.payload._id)
         .pipe(
           map((resp) => {
-            console.log(resp);
-            return registerSuccess(resp);
+            return profileSuccess({ payload: resp });
           })
         );
     })
+  ));
 
+  createProfile$ = createEffect(() => this.actions$.pipe(
+    ofType(registerSuccess),
+    mergeMap((action) => {
+      return this.profileService.create(action.payload)
+        .pipe(
+          map((payload) => {
+            return profileSuccess({ payload });
+          })
+        );
+    })
+  ));
+
+  updateProfile$ = createEffect(() => this.actions$.pipe(
+    ofType(profileUpdate),
+    mergeMap((action) => {
+      return this.profileService.updateOne(action.payload)
+        .pipe(
+          map((payload) => {
+            return profileSuccess({ payload });
+          })
+        );
+    })
   ));
 
   constructor(

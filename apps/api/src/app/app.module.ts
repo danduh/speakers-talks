@@ -7,9 +7,11 @@ import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
 import { ProfileModule } from './profile/profile.module';
 import { environment } from '../environments/environment';
+import { DbModule } from './shared/db-module';
 
 @Module({
   imports: [
+    DbModule,
     MongooseModule.forRoot(`mongodb://${environment.mongoURL}/nest`),
     UsersModule,
     AuthModule,
@@ -20,6 +22,9 @@ import { environment } from '../environments/environment';
   ],
   providers: [
     AppService
+  ],
+  exports:[
+    DbModule
   ]
 })
 export class AppModule {

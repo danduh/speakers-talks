@@ -26,7 +26,7 @@ export class RegisterComponent implements OnInit {
 
   onSubmit() {
     console.log(this.registerForm.getRawValue());
-    this.store.dispatch(register(this.registerForm.getRawValue()));
+    this.store.dispatch(register({ payload: this.registerForm.getRawValue() }));
   }
 
 }

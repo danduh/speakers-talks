@@ -8,7 +8,11 @@ export class ProfileService {
 
   }
 
-  update(profile: IUser) {
-    return this.usersService.update('asdas', profile);
+  getById(id) {
+    return this.usersService.findById(id);
+  }
+
+  update(id, profile: IUser) {
+    return this.usersService.update(id, profile);
   }
 }
