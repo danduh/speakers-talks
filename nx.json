@@ -12,7 +12,8 @@
       "tags": []
     },
     "speaker-talks-e2e": {
-      "tags": []
+      "tags": [],
+      "implicitDependencies": ["speaker-talks"]
     },
     "api": {
       "tags": []

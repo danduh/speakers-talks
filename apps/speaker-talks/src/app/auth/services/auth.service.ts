@@ -4,7 +4,9 @@ import { Observable } from 'rxjs';
 import { LoginResponse } from '@shared-interfaces';
 import { map, tap } from 'rxjs/operators';
 import { environment } from '@st-environment/environment';
+import { Injectable } from "@angular/core";
 
+@Injectable()
 export class AuthService {
   private baseUrl = environment.baseUrl;
 

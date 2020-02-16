@@ -1,26 +1,26 @@
-import { ApiModelProperty } from '@nestjs/swagger';
+import {  ApiProperty } from '@nestjs/swagger';
 
 export class CreateUserDto {
-  @ApiModelProperty()
+  @ApiProperty()
   readonly _id: number;
 
-  @ApiModelProperty({ required: false })
+  @ApiProperty({ required: false })
   readonly firstName: string;
 
-  @ApiModelProperty({ required: false })
+  @ApiProperty({ required: false })
   readonly lastName: string;
 
-  @ApiModelProperty({ required: true })
+  @ApiProperty({ required: true })
   readonly username: string;
 
-  @ApiModelProperty({ required: true })
+  @ApiProperty({ required: true })
   readonly password: string;
 }
 
 export class AuthDetailsDTO {
-  @ApiModelProperty({ required: true })
+  @ApiProperty({ required: true })
   readonly username: string;
 
-  @ApiModelProperty({ required: true })
+  @ApiProperty({ required: true })
   readonly password: string;
 }

@@ -18,9 +18,7 @@
           "builder": "ng-docker-builder:command",
           "options": {
             "command": "touch",
-            "args": [
-              "src/main.ts"
-            ]
+            "args": ["src/main.ts"]
           }
         },
         "build": {
@@ -31,7 +29,7 @@
             "main": "apps/speaker-talks/src/main.ts",
             "polyfills": "apps/speaker-talks/src/polyfills.ts",
             "tsConfig": "apps/speaker-talks/tsconfig.app.json",
-            "aot": false,
+            "aot": true,
             "assets": [
               "apps/speaker-talks/src/favicon.ico",
               "apps/speaker-talks/src/assets"
@@ -55,7 +53,6 @@
               "sourceMap": false,
               "extractCss": true,
               "namedChunks": false,
-              "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,

@@ -1,11 +1,12 @@
-import { ApiUseTags } from '@nestjs/swagger';
 import { Body, Controller, Get, HttpStatus, Param, Post, Put, Response, UseGuards } from '@nestjs/common';
 import { CreateUserDto } from '@shared-dtos';
 import { AuthGuard } from '@nestjs/passport';
 import { ProfileService } from './profile.service';
 import { IUser } from '../interfaces/user.interface';
+import { ApiBearerAuth, ApiParam } from '@nestjs/swagger';
 
-@ApiUseTags('profiles')
+
+@ApiBearerAuth()
 @Controller('/profiles')
 export class ProfileController {
   constructor(private profileService: ProfileService) {
@@ -20,13 +21,12 @@ export class ProfileController {
     this.profileService.update(params.id, profileDto)
       .then(resp => res.status(HttpStatus.OK).json(resp))
       .catch(err => res.status(HttpStatus.BAD_REQUEST).json(err));
-    // return res.status(HttpStatus.OK).json({});
   }
 
   @UseGuards(AuthGuard('jwt'))
+  @ApiParam({ name: 'id' })
   @Get(':id')
-  public async get(@Param() params, @Response() res, @Body() profileDto: CreateUserDto) {
-    console.log(profileDto);
+  public async get(@Param() params, @Response() res) {
     console.log(params.id);
     this.profileService.getById(params.id)
       .then(resp => res.status(HttpStatus.OK).json(resp))
@@ -37,8 +37,6 @@ export class ProfileController {
   @UseGuards(AuthGuard('jwt'))
   @Post()
   public async create(@Param() params, @Response() res, @Body() createUserDto: CreateUserDto) {
-    console.log(createUserDto);
-    // return res.status(HttpStatus.BAD_REQUEST).json({});
     return res.status(HttpStatus.OK).json({});
   }
 }
